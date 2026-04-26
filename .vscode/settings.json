@@ -1,5 +1,5 @@
 {
   "chat.agent.enabled": true,
-  "chat.mcp.enabled": true,
-  "github.copilot.chat.githubMcpServer.enabled": true
+  "github.copilot.chat.githubMcpServer.enabled": true,
+  "chat.mcp.access": "all"
 }
