@@ -1,11 +1,13 @@
 # Mergington High School Activities API
 
-A super simple FastAPI application that allows students to view and sign up for extracurricular activities.
+A FastAPI application that allows students to view and sign up for extracurricular activities.
 
 ## Features
 
 - View all available extracurricular activities
 - Sign up for activities
+- Unregister from activities
+- Persist data in a local SQLite database
 
 ## Getting Started
 
@@ -29,12 +31,28 @@ A super simple FastAPI application that allows students to view and sign up for 
 
 | Method | Endpoint                                                          | Description                                                         |
 | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
-| GET    | `/activities`                                                     | Get all activities with their details and current participant count |
-| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
+| GET    | `/activities`                                                       | Get all activities with their details and current participant count |
+| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu`   | Sign up for an activity                                             |
+| DELETE | `/activities/{activity_name}/unregister?email=student@mergington.edu` | Unregister from an activity                                         |
 
 ## Data Model
 
-The application uses a simple data model with meaningful identifiers:
+The application uses a persistent SQLite data model and seeds the default activities on first run.
+
+## Schema Foundation
+
+The database includes foundational tables for upcoming features:
+
+- `users`
+- `clubs`
+- `activities`
+- `activity_participants`
+- `memberships`
+- `applications`
+- `messages`
+- `finance_transactions`
+
+## Current Active Model
 
 1. **Activities** - Uses activity name as identifier:
 
@@ -47,4 +65,4 @@ The application uses a simple data model with meaningful identifiers:
    - Name
    - Grade level
 
-All data is stored in memory, which means data will be reset when the server restarts.
+Data is stored in `src/data/activities.sqlite`, so it persists across server restarts.
